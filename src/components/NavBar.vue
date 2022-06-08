@@ -1,58 +1,76 @@
-<script setup>
+<script>
+import menuIco from "../assets/Icons/bars-regular.svg";
+import { onMounted, ref } from 'vue'
 
-const props = defineProps({
-    site: {
-        type: String,
-        default: 'home'
+export default {
+    name: 'NavigationMenu',
+    components: { menuIco },
+    props: {
+        site: {
+            type: String,
+            default: ''
+        }
+    },
+    setup(props) {
+        const mobile = ref(null)
+        const mobileNav = ref(null)
+        const windowWidth = ref(null)
+
+        const checkWidth = () => {
+            windowWidth.value = window.innerWidth
+            if (windowWidth.value <= 800) {
+                mobile.value = true;
+                return;
+            } else {
+                mobile.value = false;
+                mobileNav.value = false;
+            }
+        }
+ 
+        onMounted(() => {
+            checkWidth()
+            window.addEventListener('resize', () => {
+                checkWidth()
+            });
+        })
+        
+        return { mobile, mobileNav, windowWidth, props }
     }
-})
-
-const isHome = function() {
-    return props.site == 'home' ? true : false;
 }
-
-const isJournal = function() {
-    return props.site == 'journal' ? true : false;
-}
-
-console.log(props.site);
-console.log(isHome());
-console.log(isJournal());
 </script>
 <template>
-    <header :class="{ 'home-bg': isHome(), 'journal-bg': isJournal() }">
+    <header :class="{ 'home-bg': props.site=='home', 'journal-bg': props.site=='journal' }">
         <nav class="container flex">
             <div class="branding">
-                <router-link v-if="isHome()" class="headerTitle" :to="{ name: 'Home' }">chivalore.com
+                <router-link v-if="props.site=='home'" class="headerTitle" :to="{ name: 'Home' }">chivalore.com
                 </router-link>
-                <router-link v-if="isJournal()"  class="headerTitle" to="#">/ prosperist journal
+                <router-link v-if="props.site=='journal'" class="headerTitle" to="#">/ prosperist journal
                 </router-link>
             </div>
-            <div class="navLinks">
-                <ul v-show="!mobile">
-                    <router-link class="link" to="#">Home</router-link>
-                    <router-link class="link" to="#">Journal</router-link>
-                    <router-link class="link" to="#">About</router-link>
-                    <router-link class="link" to="#">Create Post</router-link>
-                    <router-link class="link" to="#">Login/Register</router-link>
-                </ul>
-            </div>
+            <ul v-show="!mobile" class="navLinks">
+                <router-link class="link" to="#">Home</router-link>
+                <router-link class="link" to="#">Journal</router-link>
+                <router-link class="link" to="#">About</router-link>
+                <router-link class="link" to="#">Create Post</router-link>
+                <router-link class="link" to="#">Login/Register</router-link>
+            </ul>
         </nav>
-        <!-- <menuIco @click="toggleMobileNav" class="menuIco" v-show="mobile" />
+        <menuIco v-if="mobile" class="menuIco" @click="mobileNav = !mobileNav" />
      <transition name="mobileNav">
-          <ul :class="{ 'home-bg': home, 'journal-bg': journal }" class="flex mobileNav" v-show="mobileNav">
+          <ul v-show="mobileNav" :class="{ 'home-bg': props.site=='home', 'journal-bg': props.site=='journal' }" class="flex mobileNav">
                <router-link class="link" to="#">Home</router-link>
                <router-link class="link" to="#">Journal</router-link>
                <router-link class="link" to="#">About</router-link>
                <router-link class="link" to="#">Create Post</router-link>
                <router-link class="link" to="#">Login/Register</router-link>
           </ul>
-     </transition> -->
+     </transition>
     </header>
 </template>
 
 <style lang="scss" scoped>
 header {
+    user-select: none;
     height: 100px;
     width: 100%;
     box-shadow: 0 5px 5px -1px rgba(0, 0, 0, 0.2);
@@ -78,17 +96,9 @@ header {
         }
     }
 
-    header .navLinks {
+    .navLinks {
         display: flex;
-        height: 100%;
-        align-items: center;
-
-        ul {
-            display: flex;
-            height: 100%;
-            align-items: center;
-            gap: 1rem;
-        }
+        gap: 1rem;
     }
 
     .menuIco {
@@ -119,7 +129,7 @@ header {
         justify-content: flex-start;
         align-items: flex-start;
         gap: 1.5rem;
-        box-shadow: 10px 5px 10px 3px rgba(0, 0, 0, 0.1);
+        box-shadow: 10px 5px 10px 3px #0000001a;
         z-index: 99;
 
         .link {
