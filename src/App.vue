@@ -3,9 +3,9 @@
 </template>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400;1,700;1,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400;1,700;1,800&display=swap");
 
 * {
   margin: 0;
@@ -39,7 +39,7 @@ a,
 
 .link,
 .headerTitle {
-  font-family: 'Merriweather';
+  font-family: "Merriweather";
   font-weight: 300;
   transition: 0.2s color ease;
 }
@@ -62,7 +62,11 @@ a,
 
 .home-bg {
   background: rgb(0, 0, 0);
-  background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(74, 0, 37, 1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(74, 0, 37, 1) 100%
+  );
 }
 
 .journal-bg {

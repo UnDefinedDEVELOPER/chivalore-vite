@@ -1,14 +1,19 @@
-<template>
-  hello world, this journal
-</template>
-
-<script>
-export default {
-     name: 'JournalView',
-     components: { }
-}
+<script setup>
+import NavBar from "../components/NavBar.vue";
+import JournalShowcase from "../components/JournalShowcase.vue";
+import PostFilters from "../components/PostFilters.vue";
 </script>
 
-<style>
+<template>
+  <div class="journal">
+    <NavBar site="journal" />
+    <JournalShowcase />
+    <PostFilters />
+  </div>
+</template>
 
+<style lang="scss" scoped>
+.journal {
+   
+}
 </style>

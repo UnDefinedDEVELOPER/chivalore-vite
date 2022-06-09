@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-      <NavBar site='home' />
-      <section class="showcase flex">
+    <NavBar site="home" />
+    <section class="showcase flex">
       <div class="showcaseLogo">
         <img src="../assets/Logos/chivalore-logo.png" alt="Chivalore logo" />
       </div>
@@ -13,7 +13,10 @@
           The origin of Prosperism<br />and all Prosperist projects.
         </p>
         <div class="prosperism-definition">
-          <img src="../assets/prosperism-definition.png" alt="Definition of Prosperism">
+          <img
+            src="../assets/prosperism-definition.png"
+            alt="Definition of Prosperism"
+          />
         </div>
       </div>
     </section>
@@ -81,18 +84,18 @@
         </div>
       </div>
     </section>
+    <HomeFooter />
   </div>
 </template>
 
 <script>
-import NavBar from '../components/NavBar.vue'
+import NavBar from "../components/NavBar.vue";
+import HomeFooter from "../components/HomeFooter.vue";
 export default {
-    name: 'HomeView',
-    components: { NavBar },
-    setup() {
-
-    }
-}
+  name: "HomeView",
+  components: { NavBar, HomeFooter },
+  setup() {},
+};
 </script>
 
 <style lang="scss" scoped>
@@ -158,7 +161,7 @@ export default {
       left: 0;
       height: 100%;
       width: 100%;
-      background: rgba(0, 0, 0, 0.6);  
+      background: rgba(0, 0, 0, 0.6);
     }
 
     .prosperism-content {
@@ -254,7 +257,8 @@ export default {
       align-items: center;
     }
 
-    .journal-logo, .journal-text {
+    .journal-logo,
+    .journal-text {
       width: 50%;
     }
 
@@ -427,7 +431,7 @@ export default {
       height: auto;
       padding: 2rem 0;
     }
-    
+
     &::before {
       content: "";
       position: absolute;
@@ -452,7 +456,7 @@ export default {
       }
     }
 
-    .contact-form{
+    .contact-form {
       width: 50%;
 
       &.flex {
@@ -506,12 +510,13 @@ export default {
         box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.6);
         transition: 0.5s ease;
 
-        &::placeholder, &::placeholder {
+        &::placeholder {
           color: #fff;
           transition: 0.5s ease;
         }
 
-        &:focus, &:focus-visible {
+        &:focus,
+        &:focus-visible {
           outline: none;
           border-bottom: #e1c1a7 5px solid;
 
@@ -527,15 +532,24 @@ export default {
         box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.6);
         transition: 0.5s ease;
 
-        &::placeholder, &::placeholder {
+        &::placeholder {
           color: #fff;
           transition: 0.5s ease;
         }
 
-        &:focus, &:focus-visible {
+        &:focus,
+        &:focus-visible {
           outline: none;
           border-bottom: #e1c1a7 5px solid;
+        }
 
+        &:focus {
+          &::placeholder {
+            color: #e1c1a7;
+          }
+        }
+
+        &:focus-visible {
           &::placeholder {
             color: #e1c1a7;
           }
@@ -550,7 +564,7 @@ export default {
         margin-top: 1rem;
         transition: 0.2s ease;
 
-        :hover {
+        &:hover {
           color: #e1c1a7;
           border-bottom: #e1c1a7 5px solid;
           border-left: #e1c1a7 5px solid;
@@ -568,7 +582,7 @@ export default {
         fill: #fff;
         transition: 1s fill ease;
 
-        :hover {
+        &:hover {
           fill: #e1c1a7;
         }
 
