@@ -19,6 +19,11 @@
   margin: 0 auto;
 }
 
+.blog-wrapper {
+   max-width: 700px;
+   margin: 0 auto;
+}
+
 .flex {
   display: flex;
   height: 100%;

@@ -2,42 +2,58 @@
 import NavBar from "../components/NavBar.vue";
 import JournalShowcase from "../components/JournalShowcase.vue";
 import PostFilters from "../components/PostFilters.vue";
-import { onUpdated, ref } from "vue";
+import BlogPost from "../components/BlogPost.vue";
+import { ref } from "vue";
 
-const display = ref('')
-const sort = ref('')
+const display = ref("");
+const sort = ref("");
 
-/* const displayType = (a) => {
-   display.value = a;
-}
+const sampleBlogPost = [
+  {
+    title: "Prosperism - Awakening",
+    blogHTML:
+      "A very essential truth I've realized since I have arrived at the “Domain of Paths” is that it's one thing to think beautiful, eloquent, meaningful, deep, and captivating thoughts, and almost completely another thing to live a beautiful life, to truly speak eloquently, actually do meaningful things, have deep conversations and to captive oneself with useful and good knowledge.",
+    blogCoverPhoto: "universe",
+  },
+  {
+    title: "Prosperism - Improvement",
+    blogHTML:
+      "This Path is a path of improvement. It's often funny and confusing to me how extremely deep concepts can be expressed using incredibly shallow-sounding words. That is precisely the reason I decided to define this Path and all its attributes to the greatest possible extent.",
+    blogCoverPhoto: "brain",
+  },
+];
 
-const sortType = (a) => {
-   sort.value = a;
-} */
+console.log(sampleBlogPost);
 
 const getArgs = (a, b) => {
-   display.value = a;
-   sort.value = b;
-}
-
-onUpdated(() => {
-   console.log(display.value + ' ' + sort.value)
-})
+  display.value = a;
+  sort.value = b;
+};
 </script>
 
 <template>
   <div class="journal">
     <NavBar site="journal" />
     <JournalShowcase />
-    <!-- <PostFilters @displayChange="displayType" @sortChange="sortType" /> -->
-    <!-- <PostFilters @displayChange="(a) => {display = a}" @sortChange="(a) => {sort = a}" /> -->
     <PostFilters @filterClick="getArgs" />
-    <h1>{{display + ' ' + sort}}</h1>
+    <div id="post-list" class="blog-wrapper flex">
+      <BlogPost
+        :post="post"
+        v-for="(post, index) in sampleBlogPost"
+        :key="index"
+      />
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .journal {
-   
+  #post-list {
+    flex-direction: column;
+    gap: 4rem;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 0;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, onUpdated, ref } from "vue";
-const emit = defineEmits(['displayChange', 'sortChange', 'filterClick'])
+const emit = defineEmits(["displayChange", "sortChange", "filterClick"]);
 const display = ref("");
 const tiles = ref("");
 const list = ref("");
@@ -15,15 +15,15 @@ onMounted(() => {
 });
 
 onUpdated(() => {
-   emit('filterClick', display.value, sort.value)
-})
+  emit("filterClick", display.value, sort.value);
+});
 </script>
 
 <template>
   <div class="transition journal-bg flex">
     <div class="display flex">
       <input type="radio" id="t" value="tiles" v-model="display" />
-      <label @click="emit('displayChange', tiles.innerText)"
+      <label
         ref="tiles"
         :class="{
           selected: display == tiles.innerText,
@@ -34,7 +34,7 @@ onUpdated(() => {
         >tiles</label
       >
       <input type="radio" id="l" value="list" v-model="display" />
-      <label @click="emit('displayChange', list.innerText)"
+      <label
         ref="list"
         :class="{
           selected: display == list.innerText,
@@ -47,7 +47,7 @@ onUpdated(() => {
     </div>
     <div class="sort flex">
       <input type="radio" id="up" value="ascending" v-model="sort" />
-      <label @click="emit('sortChange', descending.innerText)"
+      <label
         ref="ascending"
         :class="{
           selected: sort == ascending.innerText,
@@ -57,7 +57,7 @@ onUpdated(() => {
         >ascending</label
       >
       <input type="radio" id="down" value="descending" v-model="sort" />
-      <label @click="emit('sortChange', descending.innerText)"
+      <label
         ref="descending"
         :class="{
           selected: sort == descending.innerText,
