@@ -34,18 +34,8 @@
             Read the chapters that forge the philosophy of Prosperism on my blog
             - “Prosperist Journal”
           </p>
-          <router-link class="link journal-bg" :to="{ name: 'Journal' }"
-            ><svg
-              class="svgIcon"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 320 512"
-            >
-              <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-              <path
-                d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"
-              />
-            </svg>
-            prosperist journal</router-link
+          <router-link class="link journal-bg" :to="{ name: 'Journal' }">
+            > prosperist journal</router-link
           >
         </div>
       </div>
@@ -75,12 +65,7 @@
           <button type="submit">Send</button>
         </form>
         <div class="contact-svg flex">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-            <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-            <path
-              d="M467.1 241.1L351.1 288h94.34c-7.711 14.85-16.29 29.28-25.87 43.01l-132.5 52.99h85.65c-59.34 52.71-144.1 80.34-264.5 52.82l-68.13 68.13c-9.38 9.38-24.56 9.374-33.94 0c-9.375-9.375-9.375-24.56 0-33.94l253.4-253.4c4.846-6.275 4.643-15.19-1.113-20.95c-6.25-6.25-16.38-6.25-22.62 0l-168.6 168.6C24.56 58 366.9 8.118 478.9 .0846c18.87-1.354 34.41 14.19 33.05 33.05C508.7 78.53 498.5 161.8 467.1 241.1z"
-            />
-          </svg>
+          <Feather />
         </div>
       </div>
     </section>
@@ -91,9 +76,10 @@
 <script>
 import NavBar from "../components/NavBar.vue";
 import HomeFooter from "../components/HomeFooter.vue";
+import Feather from "../assets/Icons/feather.svg"
 export default {
   name: "HomeView",
-  components: { NavBar, HomeFooter },
+  components: { NavBar, HomeFooter, Feather },
   setup() {},
 };
 </script>
@@ -311,7 +297,7 @@ export default {
           width: auto;
         }
 
-        &:hover path {
+        &:hover .svgIcon {
           fill: #e1c1a7;
         }
       }

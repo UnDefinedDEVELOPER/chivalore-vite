@@ -9,9 +9,26 @@ const sort = ref("");
 const ascending = ref("");
 const descending = ref("");
 
+const mobile = ref(null);
+
+const checkWidth = () => {
+  const windowWidth = window.innerWidth;
+  if (windowWidth <= 800) {
+    mobile.value = true;
+    return;
+  } else {
+    mobile.value = false;
+  }
+};
+
 onMounted(() => {
+  checkWidth();
+  window.addEventListener("resize", () => {
+    checkWidth();
+  });
   sort.value = descending.value.innerText;
   display.value = tiles.value.innerText;
+  emit("filterClick", display.value, sort.value);
 });
 
 onUpdated(() => {

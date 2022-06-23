@@ -20,8 +20,12 @@
 }
 
 .blog-wrapper {
-   max-width: 700px;
+   max-width: 1200px;
    margin: 0 auto;
+
+   @media (max-width: 1200px) {
+      margin: 0 1rem;
+   }
 }
 
 .flex {
@@ -70,7 +74,7 @@ a,
   background: linear-gradient(
     90deg,
     rgba(0, 0, 0, 1) 0%,
-    rgba(74, 0, 37, 1) 100%
+    rgba(77, 0, 38, 1) 100%
   );
 }
 
